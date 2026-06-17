@@ -329,7 +329,31 @@ function App() {
   const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
-    void import('@google/model-viewer')
+    const applyModelCursor = () => {
+      const model = document.querySelector<HTMLElement>('.temple-model')
+      const shadowRoot = model?.shadowRoot
+
+      model?.style.setProperty('cursor', 'var(--cursor-sun-grab)', 'important')
+
+      if (!shadowRoot || shadowRoot.querySelector('[data-vastu-cursor]')) {
+        return
+      }
+
+      const style = document.createElement('style')
+      style.dataset.vastuCursor = 'true'
+      style.textContent = `
+        :host,
+        * {
+          cursor: var(--cursor-sun-grab) !important;
+        }
+      `
+      shadowRoot.append(style)
+    }
+
+    void import('@google/model-viewer').then(() => {
+      applyModelCursor()
+      window.setTimeout(applyModelCursor, 600)
+    })
 
     const root = document.documentElement
 
@@ -351,10 +375,12 @@ function App() {
 
     document.querySelectorAll('.reveal').forEach((node) => observer.observe(node))
     window.addEventListener('pointermove', handlePointer, { passive: true })
+    window.addEventListener('load', applyModelCursor)
 
     return () => {
       observer.disconnect()
       window.removeEventListener('pointermove', handlePointer)
+      window.removeEventListener('load', applyModelCursor)
     }
   }, [])
 
