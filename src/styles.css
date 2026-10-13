@@ -49,6 +49,27 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 137, 53, 0.42) var(--color-light-stone-base);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light-stone-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 137, 53, 0.42);
+  border-radius: 9999px;
+  border: 2px solid var(--color-light-stone-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 137, 53, 0.72);
 }
 
 body {
