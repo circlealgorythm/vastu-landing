@@ -1,7 +1,9 @@
 # Project Guide: Лендинг «Васту-геометрия»
 
 > **Экосистема:** Школа AisuKam (`vastu.aisukam.ru`)  
-> **Стек:** Vite, React 19, TypeScript, Three.js / React Three Fiber, Custom CSS
+> **Стек:** Vite, React 19, TypeScript, Three.js / React Three Fiber, Custom CSS  
+> **Сквозные стандарты школы:** Перед реализацией общих UI/UX (модалки, скроллбары) или аналитики сверяться с [.harness/lessons.md](file:///./.harness/lessons.md).  
+> **Локальный журнал прогресса:** [progress.md](file:///./projects/landing-vastu/progress.md)
 
 ---
 
